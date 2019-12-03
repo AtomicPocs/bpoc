@@ -40,7 +40,7 @@ jobs:
       - uses: azure/k8s-deploy@v1
         with:
           manifests: |
-            k8s/bpoc-deployment.yaml
+            k8s/bpoc-deployments.yaml
             k8s/bpoc-service.yaml
           images: |
             IMAGE_ID

@@ -42,7 +42,6 @@ jobs:
           manifests: |
             k8s/bpoc-deployment.yaml
             k8s/bpoc-service.yaml
-            k8s/bpoc-mapping.yaml
           images: |
             IMAGE_ID
           imagepullsecrets: |

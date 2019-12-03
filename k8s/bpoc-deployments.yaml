@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bpoc
+  namespace: atomic-pocs
+  labels:
+    app: bpoc
+spec:
+  selector:
+    matchLabels:
+      app: bpoc
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: bpoc
+    spec:
+      containers:
+      - name: bpoc
+        image: docker.pkg.github.com/atomicpocs/bpoc/bpoc:1.0.0
+        ports:
+        - name: http 
+          containerPort: 4567
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "333m"
+        livenessProbe:
+            httpGet:
+              path: /ping
+              port: 4567
+            initialDelaySeconds: 5
+            periodSeconds: 5
+      imagePullSecrets:
+        - name: regcred

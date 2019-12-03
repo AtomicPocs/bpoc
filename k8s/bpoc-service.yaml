@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: bpoc-service
+  namespace: atomic-pocs
+  labels:
+    app: bpoc
+spec:
+  selector:
+    app: bpoc
+  ports:
+  - name: http
+    port: 4567
+    targetPort: 4567
